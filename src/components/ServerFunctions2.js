@@ -11,7 +11,7 @@ import "code-highlight/lib/style.css";
 import "highlight.js/styles/atom-one-dark.css";
 
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from 'prism-react-renderer/themes/atom'
+import theme from '../layout/atom';
 
 
 

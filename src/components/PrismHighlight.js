@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from 'prism-react-renderer/themes/atom'
+import theme from '../layout/atom';
 
 
 

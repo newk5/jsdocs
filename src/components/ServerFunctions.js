@@ -4,7 +4,7 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 //import CodeHighlight from 'code-highlight';
 
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from 'prism-react-renderer/themes/atom'
+import theme from '../layout/atom';
 import  PrismHighlight  from './PrismHighlight';
 
 

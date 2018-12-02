@@ -5,7 +5,7 @@ import { Panel } from 'primereact/panel';
 import { SplitButton } from 'primereact/splitbutton';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from 'prism-react-renderer/themes/atom'
+import theme from '../layout/atom';
 import  PrismHighlight  from './PrismHighlight';
 
 
