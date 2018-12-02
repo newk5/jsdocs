@@ -1,0 +1,172 @@
+/* Place your extensions here to make migration to a new release easier. */
+.layout-main {
+    background: #494c57;
+}
+
+.card {
+    background: #32323299;
+}
+.card h1 {
+    color: white;
+}
+
+.card span.title {
+    color: white;
+}
+
+span.detail {
+    color: #5f8db5 !important;
+    font-weight: 500;
+}
+
+label.p-checkbox-label {
+    color: white;
+}
+
+body .p-radiobutton-label {
+    margin: 0 0 0 .5em;
+}
+label {
+    color: white;
+}
+
+.p-dialog-titlebar {
+    background-color: #2d6da5 !important;
+}
+
+body .p-progressbar .p-progressbar-label {
+    margin-top: 0;
+    color: #d6d6d6 !important;
+    line-height: 24px;
+}
+
+body .p-progressbar {
+    border: 0 none;
+    height: 24px;
+    background-color: #585b67 !important;
+}
+div#root {
+    background: #494c57;
+}
+
+.layout-footer {
+    background: #3b3c41 !important;
+    color: white;
+}
+
+div {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.highlight-details i {
+    color: #737171;
+}
+
+.highlight-details {
+    background: #3b3c41 !important;
+    border-radius: 4px;
+}
+.dashboard .contacts ul li a:hover {
+    cursor: pointer;
+    background-color: #252525;
+}
+
+.p-col.dl-wrapper {
+    border: solid 2px #73797d52;
+    border-radius: 6px;
+    padding: 22px;
+    margin: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #515c6d;
+
+}
+
+.p-col.dl-wrapper img {
+    height: 150px;
+    
+}
+
+.p-col.dl-wrapper button {
+    display: block;
+    position: absolute;
+    margin-top: 96px;
+}
+
+.p-splitbutton {
+    display: block;
+    position: absolute;
+    margin-top: 12px;
+}
+
+span.p-button-text.p-c {
+    width: 167px;
+}
+button.p-button.p-component.p-splitbutton-menubutton.p-button-icon-only {
+    position: relative;
+}
+
+.p-grid h2 {
+    position: relative;
+}
+
+.card li a {
+    color: #4192d8 !important;
+    text-decoration: none;
+}
+button.p-button.p-component.p-splitbutton-menubutton.p-button-icon-only {
+    left: 145px;
+}
+
+.code-highlight .title {
+    color: #ffffff;
+    font-size: 17px;
+}
+
+.p-accordion-content-wrapper-expanded {
+    height: 100%;
+    max-height: none !important;
+}
+
+pre.javascript.hljs {
+    background-color: #3b3c41;
+}
+
+pre.javascript.hljs {
+    display: none;
+}
+
+div.title {
+    color: #ffffff;
+    font-size: 17px;
+    cursor: pointer;
+}
+div.title:hover {
+    font-size: 20px;
+    color: #3990da;
+    /* transition-delay: 0.2s; */
+    transition: color .2s, font-size .1s;
+}
+
+pre.prism-code.language-javascript {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+pre.prism-code.language-javascript {
+    display: none;
+}
+
+.descriptionPrism {
+    color: #8c8c8c;
+    font-style: italic;
+}
+
+
+
