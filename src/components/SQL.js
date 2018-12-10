@@ -197,8 +197,8 @@ function registerAccount(nickname, password, ip) {
 /*UPDATE*/
 function changeAccountName(accountID, nickname) {
 
-    var updateQ = conn.instance.prepareStatement("UPDATE Players SET nickname=?, WHERE id=?");
-    updateQ.String(1, nickname);
+    var updateQ = conn.instance.prepareStatement("UPDATE Players SET nickname=? WHERE id=?");
+    updateQ.setString(1, nickname);
     updateQ.setInt(2, accountID);
 
     /*asynchronous operation*/
