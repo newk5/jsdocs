@@ -62,7 +62,14 @@ export class HttpClient extends Component {
         return ":";
     }
 
-
+    download() {
+        fetch('https://api.github.com/repos/newk5/httpclient-mod/releases/latest')
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                window.location.href = json.assets[0].browser_download_url;
+            });
+    }
 
     render() {
         const paramStyle = {
@@ -75,6 +82,8 @@ export class HttpClient extends Component {
                 <div className="p-col-12">
                     <div className="card">
                         <h1>HttpClient module</h1>
+                        <a style={{"cursor":"pointer"}} onClick={this.download}>Download</a><br/>
+                        <i>Extract the contents of the zip file to the "modules" folder on the server root directory (if you don't have this folder create it)</i><br/><br/>
                         <p>An HTTP client to make http requests</p>
                         <ul>
                             <li><b>postJson</b>( <u>string</u>  <span style={paramStyle} >url</span> ,  <u>object or string</u> <span style={paramStyle} >json</span>, <u>function(response)</u>  <span style={paramStyle} >onSuccess</span> );</li>

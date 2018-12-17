@@ -58,6 +58,16 @@ export class SQL extends Component {
         });
     }
 
+    download() {
+        fetch('https://api.github.com/repos/newk5/sql-mod/releases/latest')
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                window.location.href = json.assets[0].browser_download_url;
+            });
+    }
+
+
     render() {
 
 
@@ -66,6 +76,9 @@ export class SQL extends Component {
                 <div className="p-col-12">
                     <div className="card">
                         <h1>SQL module</h1>
+                        <a style={{"cursor":"pointer"}} onClick={this.download}>Download</a><br/>
+                        <i>Extract the contents of the zip file to the "modules" folder on the server root directory (if you don't have this folder create it)</i><br/><br/>
+                        
                         <p>SQL module to use with SQLite and MySQL</p>
                         <Accordion>
                         <AccordionTab header="Creating the connection"  id="" ><br />

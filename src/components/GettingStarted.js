@@ -14,7 +14,7 @@ export class GettingStarted extends Component {
                 {
                     label: 'Download (x86)',
                     icon: 'pi pi-refresh',
-                    command: () => window.location = "https://mega.nz/#!TmAw3ADA!VoAC-XvuhSRkg3sOvdDFzGL4ShnyGh-IzllsRJN6gTc"
+                    command: () => window.location = "https://mega.nz/#!qyxw3CSQ!xbEEBpNXpDrb4Bt-ZYw-w06XcUExDvsKz-A2ljbzBRY"
 
 
                 }
@@ -25,11 +25,11 @@ export class GettingStarted extends Component {
     }
 
     downloadLinux(e){
-        window.location = "https://mega.nz/#!aj5GQYba!9z7TnrlroQgKZeYFX-ag0vjm9sJu03t5RIoyXYlNjF4";
+        window.location = "https://mega.nz/#!WjIkRY7T!2JoImkCnc4VsOs6cxSbOaaH7ye0u-z6ZPjdBvswcyE8";
     }
 
     downloadWin64(e){
-        window.location = "https://mega.nz/#!nzwECAgC!zLjNvtkvGQAvLsBh9Lg_LMRF8DEQ0m7O4m7iQ-EBL7A";
+        window.location = "https://mega.nz/#!aqJURawD!jg_9s8E0BrSZAWqKPY7u3csOAYiljSO7VyDuXu0uzBY";
     }
   
 

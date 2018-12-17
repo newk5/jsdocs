@@ -6,7 +6,7 @@ import { SplitButton } from 'primereact/splitbutton';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from '../layout/atom';
-import  PrismHighlight  from './PrismHighlight';
+import PrismHighlight from './PrismHighlight';
 
 
 
@@ -16,21 +16,21 @@ export class FileSystem extends Component {
     constructor() {
         super();
         this.state = {
-            
+
 
         };
 
     }
 
-    
+
 
     appendClickListeners() {
         let t = document.getElementsByClassName("title");
         Array.from(t).forEach(function (element) {
             element.addEventListener('click', function () {
                 var next = element.nextElementSibling;
-               
-                if (next.tagName == 'DIV'){
+
+                if (next.tagName == 'DIV') {
                     next = next.nextElementSibling;
                 }
                 if (next.style.display == "block") {
@@ -53,10 +53,22 @@ export class FileSystem extends Component {
     componentDidMount() {
         let t = document.getElementsByClassName("language-javascript");
         Array.from(t).forEach(function (element) {
-                element.style.setProperty("display", "block");
-                
-
+            element.style.setProperty("display", "block");
         });
+
+
+
+
+        //
+    }
+
+    download() {
+        fetch('https://api.github.com/repos/newk5/filesystem-mod/releases/latest')
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                window.location.href = json.assets[0].browser_download_url;
+            });
     }
 
     render() {
@@ -67,13 +79,15 @@ export class FileSystem extends Component {
                 <div className="p-col-12">
                     <div className="card">
                         <h1>Filesystem module</h1>
+                        <a style={{"cursor":"pointer"}} onClick={this.download}>Download</a><br/>
+                        <i>Extract the contents of the zip file to the "modules" folder on the server root directory (if you don't have this folder create it)</i><br/><br/>
                         <p>This module is used to create, read and delete files and folders from disk. It can also be used to verify if certain files and folders exist, or even renaming them or checking permissions</p>
                         <Accordion>
-                        <AccordionTab header="Creating a new file"  id="" ><br />
-                          
-                                        <PrismHighlight language="javascript"  >
-                                            {
-`var fs = require("filesystem");
+                            <AccordionTab header="Creating a new file" id="" ><br />
+
+                                <PrismHighlight language="javascript"  >
+                                    {
+                                        `var fs = require("filesystem");
 
 /* This operation can be done either asynchronously or synchronously*/
 
@@ -85,16 +99,16 @@ fs.appendToFile("test.txt", "this will be written to the file", function(){
 /*synchronous operation*/
 fs.appendToFile("test.txt", "this will be written to the file");
 `
-                                            }
-                                        </PrismHighlight>
-                                  <p>The <b>appendToFile</b> function can also be used to append text to an existing file.</p>
-                           
-                    </AccordionTab>
-                    <AccordionTab header="Reading a file"  id="" ><br />
-                          
-                          <PrismHighlight language="javascript"  >
-                              {
-`var fs = require("filesystem");
+                                    }
+                                </PrismHighlight>
+                                <p>The <b>appendToFile</b> function can also be used to append text to an existing file.</p>
+
+                            </AccordionTab>
+                            <AccordionTab header="Reading a file" id="" ><br />
+
+                                <PrismHighlight language="javascript"  >
+                                    {
+                                        `var fs = require("filesystem");
 
 /* This operation can be done either asynchronously or synchronously*/
 
@@ -108,16 +122,16 @@ var text = fs.readFile("test.txt");
 console.log(text);
 
 `
-                              }
-                          </PrismHighlight>
-             
-      </AccordionTab >
-     
-      <AccordionTab header="Deleting a folder"  id="" ><br />
-                          
-                          <PrismHighlight language="javascript"  >
-                              {
-`var fs = require("filesystem");
+                                    }
+                                </PrismHighlight>
+
+                            </AccordionTab >
+
+                            <AccordionTab header="Deleting a folder" id="" ><br />
+
+                                <PrismHighlight language="javascript"  >
+                                    {
+                                        `var fs = require("filesystem");
 
 /* This operation can be done either asynchronously or synchronously*/
 
@@ -130,11 +144,11 @@ fs.deleteFolder("testFolder", function(text){
 fs.deleteFolder("testFolder");
 
 `
-                              }
-                          </PrismHighlight>
-             
-      </AccordionTab>
-                           
+                                    }
+                                </PrismHighlight>
+
+                            </AccordionTab>
+
                         </Accordion>
 
 

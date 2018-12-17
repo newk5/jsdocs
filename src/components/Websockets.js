@@ -12,7 +12,7 @@ import  PrismHighlight  from './PrismHighlight';
 
 
 
-export class IRC extends Component {
+export class Websockets extends Component {
 
     constructor() {
         super();
@@ -59,7 +59,7 @@ export class IRC extends Component {
     }
 
     download() {
-        fetch('https://api.github.com/repos/newk5/ircbot-mod/releases/latest')
+        fetch('https://api.github.com/repos/newk5/websockets-mod/releases/latest')
             .then(function (response) {
                 return response.json();
             }).then(function (json) {
@@ -74,119 +74,69 @@ export class IRC extends Component {
             <div className="p-grid">
                 <div className="p-col-12">
                     <div className="card">
-                        <h1>IRCBot module</h1>
+                        <h1>Websockets module</h1>
                         <a style={{"cursor":"pointer"}} onClick={this.download}>Download</a><br/>
                         <i>Extract the contents of the zip file to the "modules" folder on the server root directory (if you don't have this folder create it)</i><br/><br/>
-                        <p>IRC module used to create IRC bot to interact with the server </p>
-                        <h3>Creating the connection and joining the server </h3>
+                        <p>Websockets module used to create websocket servers or clients. Can be used to communicate with the browser or other websocket servers</p>
+                        <h3>Creating a websocket server</h3>
 
                        
                                         <PrismHighlight language="javascript"  >
                                             {
-`var irc = require("ircbot");
+`var ws = require("websockets");
 
-var config = new IRCConfig()
-    .setName("guest151234") //bot name
-    .setServerHostname("irc.liberty-unleashed.co.uk") //IRC server ip
-    .setServerPort(6667) //IRC server port
-    .addAutoJoinChannel("#IRCTest162")
-    .addAutoJoinChannel("#IRCTest162Staff channelPassword");
+var wsserver = ws.startServer("localhost", 3030, {
+    events: {
+        onStart: function (msg) { //when the websocket server starts
+            wsserver.broadcast("hello to all clients!"); //sends a message to all of the connected clients
+        },
+        onMessage: function (conn, msg) { //when the server receives a message from a client
 
+        },
+        onOpen: function (connection, client) { //when a client opens a connection to this websocket server
 
-var events = {
-    onConnect: function (msg) {
-        console.success(msg);
-    },
-    onMessage: function (channel, user, msg) {
-        server.sendClientMsg(null, new Colour(93, 193, 89), "(IRC) " + user.nick + ": " + msg)
+        },
+        onClose: function (connection, code, reason, remote) { //when a client closes a connection to this websocket server
+
+        },
+        onError: function (connection, error) { //when an error happens
+
+        }
+
     }
-};
-
-var bot = irc.init(config, events);
+});
 `
 }
 </PrismHighlight><hr/>
-<h3>IRC Events </h3>
-<p><b>onConnect: function (string msg) </b>- <i>When the bot successfully connects to the IRC server</i></p>
-<p><b>onMessage: function (string channel, IRCUser user, string msg)</b>  - <i>When an IRC user in any of the channels the bot joined types on IRC</i></p>
+<h3>Creating a websocket client</h3>
 
 <PrismHighlight language="javascript"  >
                                             {
-`{
-    onConnect: function (msg) {
-        console.success(msg);
-    },
-    onMessage: function (channel, user, msg) {
-        server.sendClientMsg(null, new Colour(93, 193, 89), "(IRC) " + user.nick + ": " + msg)
+`
+var ws = require("websockets");
+
+var wsclient = ws.startClient("ws://localhost:3030", {
+    events: {
+        onOpen: function (connection, data) { //when the client opens a connection to the websocket server
+
+        },
+        onMessage: function (msg) { //when the client receives a message from the server
+
+        },
+        onClose: function (code, reason, remote) { //when the client closes its connection to the websocket server
+
+        },
+        onError: function (error) { //when an error happens
+
+        }
     }
-}
+});
 
 `
 }
 </PrismHighlight>
 <hr/>
-<h3>Echoing from the server to IRC</h3>
-<p><b>bot.echo(string channel, string message)</b></p>
-<PrismHighlight language="javascript"  >
-{`
-var irc = require("ircbot");
 
-function onPlayerConnect(player) {
-    var red = irc.color("RED");
-    bot.echo("#IRCTest162", red + player.name + " has joined the server");
-}
-`
-}
-</PrismHighlight> 
-<hr/>
-<h3>IRCUser Object </h3>
-<PrismHighlight language="javascript"  >
-{`IRCUser.nick - string
-IRCUser.op - boolean
-IRCUser.hop - boolean
-IRCUser.sop - boolean
-IRCUser.vop - boolean
-IRCUser.owner - boolean
-IRCUser.getLevel() - string
-
-`
-}
-</PrismHighlight>   <hr/>
-<h3>IRC Colors and styles </h3>
-<PrismHighlight language="javascript"  >
-{`
-"NORMAL"
-"BOLD"
-"UNDERLINE"
-"WHITE"
-"BLACK"
-"DARK_BLUE"
-"DARK_GREEN"
-"RED"
-"BROWN"
-"PURPLE"
-"OLIVE"
-"YELLOW"
-"GREEN"
-"TEAL"
-"CYAN"
-"BLUE"
-"MAGENTA"
-"DARK_GRAY"
-"LIGHT_GRAY"
-
-Examples: 
-    var bold = irc.color("BOLD");
-    var red = irc.color("RED");
-    var cyan = irc.color("CYAN");
-    bot.echo("#IRCTest162", bold + "this text is bold");
-    bot.echo("#IRCTest162", bold + red+"this text is bold red");
-    bot.echo("#IRCTest162", red  + "this text is red" + cyan + " and this text is cyan");
-
-
-`
-}
-</PrismHighlight>  
                    
 
                     </div>

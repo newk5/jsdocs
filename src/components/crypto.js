@@ -22,6 +22,15 @@ export class Crypto extends Component {
 
     }
 
+    download() {
+        fetch('https://api.github.com/repos/newk5/crypto-mod/releases/latest')
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                window.location.href = json.assets[0].browser_download_url;
+            });
+    }
+
     
 
     appendClickListeners() {
@@ -67,6 +76,8 @@ export class Crypto extends Component {
                 <div className="p-col-12">
                     <div className="card">
                         <h1>Crypto module</h1>
+                        <a style={{"cursor":"pointer"}} onClick={this.download}>Download</a><br/>
+                        <i>Extract the contents of the zip file to the "modules" folder on the server root directory (if you don't have this folder create it)</i><br/><br/>
                         <p>Hashing module</p>
                         <ul>
                             <li><b>SHA512</b>( string text , <i>(optional)</i> function(hashedResult) )</li>

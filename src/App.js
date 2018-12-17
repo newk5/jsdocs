@@ -35,6 +35,7 @@ import { Vector } from './components/Vector';
 import { Quaternion } from './components/Quaternion';
 import { Colour } from './components/Colour';
 import { FAQ } from './components/FAQ';
+import { Websockets } from './components/Websockets';
 
 
 class App extends Component {
@@ -144,13 +145,15 @@ class App extends Component {
                 label: 'Streams', icon: 'pi pi-refresh pi-align-left', command: () => { window.location = '#/streams' }
             },
             {
-                label: 'Modules', icon: 'pi pi-fw pi-clone', badge: '5',
+                label: 'Modules', icon: 'pi pi-fw pi-clone', badge: '6',
                 items: [
                     { label: 'Filesystem', icon: 'pi pi-fw  pi-align-left', command: () => { window.location = '#/filesystem' } },
                     { label: 'Crypto', icon: 'pi pi-fw pi-align-left', command: () => { window.location = '#/crypto' } },
                     { label: 'SQL', icon: 'pi pi-fw pi-align-left', command: () => { window.location = "#/sql" } },
                     { label: 'HTTP Client', icon: 'pi pi-fw pi-globe', command: () => { window.location = "#/httpClient" } },
                     { label: 'IRC Bot', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/irc" } },
+                    { label: 'Websockets', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/websockets" } }
+
                 ]
             },
             {
@@ -241,6 +244,8 @@ class App extends Component {
                     <Route path="/colour" exact component={Colour} />
                     <Route path="/Vector" exact component={Vector} />
                     <Route path="/Quaternion" exact component={Quaternion} />
+                    <Route path="/Websockets" exact component={Websockets} />
+
 
 
                     <Route path="/faq" component={FAQ} />
