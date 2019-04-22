@@ -1,0 +1,46 @@
+{
+  "modules": [
+    {
+      "name": "Filesystem",
+      "description": "Module used to create, read and delete files and folders from disk. It can also be used to verify if certain files and folders exist, or even renaming them or checking permissions"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/filesystem-mod/releases/latest"
+    },
+    {
+      "name": "Crypto",
+      "description": "Hashing module"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/crypto-mod/releases/latest"
+    },
+    {
+      "name": "SQL",
+      "description": "SQL module to use with SQLite and MySQL"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/sql-mod/releases/latest"
+    },
+    {
+      "name": "Http client",
+      "description": "HTTP client to make http requests"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/httpclient-mod/releases/latest"
+    },
+    {
+      "name": "IRC",
+      "description": "IRC module used to create IRC bots to interact with the server"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/ircbot-mod/releases/latest"
+    },
+    {
+      "name": "Websockets",
+      "description": "Websockets module used to create websocket servers or clients. Can be used to communicate with the browser or other websocket servers"
+      "version": "v0.0.2",
+      "link": "https://api.github.com/repos/newk5/websockets-mod/releases/latest"
+    },
+    {
+      "name": "Discord",
+      "description": "Discord module used to interact with discord bots"
+      "version": "v0.0.1",
+      "link": "https://api.github.com/repos/newk5/discord-mod/releases/latest"
+    }
+  ]
+}
