@@ -163,7 +163,13 @@ Player.isCompatibleWithWorld(integer world) -  boolean
    Examples:
    
 function onPlayerSpawn(player) {
-    player.immunities = (PlayerImmunity.BulletProof  | PlayerImmunity.BulletProof  );
+    //adding immunities
+    player.immunities.add(PlayerImmunity.BulletProof);
+    player.immunities.add(PlayerImmunity.FireProof );
+    player.immunities.add(PlayerImmunity.ExplosionProof );
+    //removing
+    player.immunities.remove(PlayerImmunity.FireProof );
+    player.immunities.remove(PlayerImmunity.ExplosionProof );
 }
 `
                                             }

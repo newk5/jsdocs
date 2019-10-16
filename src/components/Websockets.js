@@ -85,29 +85,64 @@ export class Websockets extends Component {
                                             {
 `var ws = require("websockets");
 
-var wsserver = ws.startServer("localhost", 3030, {
-    events: {
-        onStart: function (msg) { //when the websocket server starts
-            wsserver.broadcast("hello to all clients!"); //sends a message to all of the connected clients
-        },
-        onMessage: function (conn, msg) { //when the server receives a message from a client
 
-        },
-        onOpen: function (connection, client) { //when a client opens a connection to this websocket server
-
-        },
-        onClose: function (connection, code, reason, remote) { //when a client closes a connection to this websocket server
-
-        },
-        onError: function (connection, error) { //when an error happens
-
-        }
-
+var serverEvents = {
+    onStart: function (connection, msg) { //when the server starts
+        console.log(msg);
+    },
+    onMessage: function (conn, msg, uri, address) { //when the server receives a message from a client
+        console.log("RECEIVED MSG: " + msg);
+    },
+    onOpen: function (conn, uri, addr) { //when a client connects to the server
+        console.log("connected: " + addr);
+    },
+    onClose: function (conn, uri, address) { //when a client closes the connection
+        console.log("closed: " + address);
     }
-});
+};
+
+//starts up the websocket server and listens for messages on the /general endpoint
+var socketServer = ws.startServer("/general", 3030, { events: serverEvents } );
 `
 }
 </PrismHighlight><hr/>
+<h3>Sending a message to all the clients connected to a specific endpoint</h3>
+<PrismHighlight language="javascript"  >
+                                            {
+`
+//sends a message to all clients to connected to the /general endpoint
+socketServer.broadcast("/general", "hello");
+
+`
+}
+</PrismHighlight><hr/>
+<h3>Adding multiple endpoints</h3>
+<PrismHighlight language="javascript"  >
+                                            {
+`
+var newEndpointEvents = {
+    onStart: function (connection, msg) { 
+        console.log(msg);
+    },
+    onMessage: function (conn, msg, uri, address) {
+        console.log("RECEIVED MSG: " + msg);
+    },
+    onOpen: function (conn, uri, addr) { 
+        console.log("connected: " + addr);
+    },
+    onClose: function (conn, uri, address) { 
+        console.log("closed: " + address);
+    }
+};
+
+socketServer.addEndpoint("/chat",  { events: newEndpointEvents } );
+socketServer.addEndpoint("/chat2",  { events: newEndpointEvents } );
+
+`
+}
+</PrismHighlight><hr/>
+
+
 <h3>Creating a websocket client</h3>
 
 <PrismHighlight language="javascript"  >
@@ -115,23 +150,33 @@ var wsserver = ws.startServer("localhost", 3030, {
 `
 var ws = require("websockets");
 
-var wsclient = ws.startClient("ws://localhost:3030", {
-    events: {
-        onOpen: function (connection, data) { //when the client opens a connection to the websocket server
+var clientEvents = {
+    onOpen: function (connection, data) { //when the client opens a connection to the websocket server
 
-        },
-        onMessage: function (msg) { //when the client receives a message from the server
+    },
+    onMessage: function (msg) { //when the client receives a message from the server
 
-        },
-        onClose: function (code, reason, remote) { //when the client closes its connection to the websocket server
+    },
+    onClose: function (code, reason, remote) { //when the client closes its connection to the websocket server
 
-        },
-        onError: function (error) { //when an error happens
+    },
+    onError: function (error) { //when an error happens
 
-        }
     }
-});
+};
+//sends a message to the server /general endpoint
+var wsclient = ws.startClient("ws://localhost:3030/general", { events : clientEvents });
 
+`
+}
+</PrismHighlight>
+<hr/>
+<h3>Sending messages to the server</h3>
+
+<PrismHighlight language="javascript"  >
+                                            {
+`
+wsclient.send("hello!");
 `
 }
 </PrismHighlight>

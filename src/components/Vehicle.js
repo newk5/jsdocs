@@ -131,7 +131,8 @@ Contructor:  VehicleImmunity(integer... flags)
 Examples:
 
 function onVehicleRespawn(vehicle) {
-    vehicle.immunities = ( VehicleImmunity.FireProof | VehicleImmunity.BulletProof );
+    var vi = new VehicleImmunity(VehicleImmunity.BulletProof, VehicleImmunity.FireProof );
+    vehicle.immunities = vi;
 }
 `
                                             }

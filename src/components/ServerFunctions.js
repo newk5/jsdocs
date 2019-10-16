@@ -1086,7 +1086,7 @@ ServerOption.DisableHeliBladeDamage`
                                             {
  `function onPlayerCommand(player, message) {
     if (message.startsWith("blip ")){
-        var spriteId = message.split(" ")[1];
+        var spriteId = parseInt(message.split(" ")[1]);
         var blip = new CoordBlipInfo(1, player.world, player.pos, 1, new Colour(255,0,0), spriteId) ;
         server.createCoordBlip(blip);
     } 

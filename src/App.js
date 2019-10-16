@@ -36,6 +36,7 @@ import { Quaternion } from './components/Quaternion';
 import { Colour } from './components/Colour';
 import { FAQ } from './components/FAQ';
 import { Websockets } from './components/Websockets';
+import { Discord } from './components/Discord';
 
 
 class App extends Component {
@@ -145,14 +146,15 @@ class App extends Component {
                 label: 'Streams', icon: 'pi pi-refresh pi-align-left', command: () => { window.location = '#/streams' }
             },
             {
-                label: 'Modules', icon: 'pi pi-fw pi-clone', badge: '6',
+                label: 'Modules', icon: 'pi pi-fw pi-clone', badge: '7',
                 items: [
                     { label: 'Filesystem', icon: 'pi pi-fw  pi-align-left', command: () => { window.location = '#/filesystem' } },
                     { label: 'Crypto', icon: 'pi pi-fw pi-align-left', command: () => { window.location = '#/crypto' } },
                     { label: 'SQL', icon: 'pi pi-fw pi-align-left', command: () => { window.location = "#/sql" } },
                     { label: 'HTTP Client', icon: 'pi pi-fw pi-globe', command: () => { window.location = "#/httpClient" } },
                     { label: 'IRC Bot', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/irc" } },
-                    { label: 'Websockets', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/websockets" } }
+                    { label: 'Websockets', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/websockets" } },
+                    { label: 'Discord', icon: 'pi pi-fw pi-clone', command: () => { window.location = "#/discord" } }
 
                 ]
             },
@@ -245,9 +247,7 @@ class App extends Component {
                     <Route path="/Vector" exact component={Vector} />
                     <Route path="/Quaternion" exact component={Quaternion} />
                     <Route path="/Websockets" exact component={Websockets} />
-
-
-
+                    <Route path="/Discord" exact component={Discord} />
                     <Route path="/faq" component={FAQ} />
                 </div>
 
